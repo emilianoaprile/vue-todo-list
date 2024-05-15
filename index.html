@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CDN Vue -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- fonts -->
+    <script src="https://kit.fontawesome.com/7d64c20f84.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+        rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <title>Vue - TodoList</title>
+</head>
+
+<body>
+    <div id="app">
+        <main>
+            <div class="container wrapper">
+                <div class="logo">
+                    <img :src="logoPath" alt="">
+                </div>
+
+                <div class="new_task">
+                    <input class="new_task-input" type="text" placeholder="Nuovo task..." v-model="newTask" @keyup.enter="addNewTask()">
+                    <button class="btn new_task-btn" @click="addNewTask()">Aggiungi</button>
+                </div>
+                <div class="error" v-if="error">
+                    <small>{{errorMessage}}</small>
+                </div>
+
+                <div class="tasks_card">
+                    <div class="tasks">
+                        <ul class="tasks_list">
+                            <li class="task" :class="{lineThrough: task.done}" v-for="(task, index) in tasks"
+                                :key="index">
+                                <span>{{task.text}}</span>
+                                <ul class="check_marks">
+                                    <li class="done" @click.stop="taskDone(index)">
+                                        <i class="fa-solid fa-check"></i>
+                                    </li>
+                                    <li class="delete" @click.stop="removeTask(index)">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                        <h2 class="no_tasks-title" v-if="tasks.length === 0">
+                            Non ci sono task!
+                        </h2>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+
+    <script src="./js/app.js"></script>
+</body>
+
+</html>
