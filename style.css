@@ -52,7 +52,8 @@ li {
     width: 100%;
     display: flex;
     justify-content: center;
-
+    position: relative;
+    padding-bottom: 40px;
 }
 
 .new_task-input {
@@ -76,6 +77,9 @@ li {
 .error {
     color: rgb(255, 38, 0);
     font-size: 22px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 .tasks {

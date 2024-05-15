@@ -28,16 +28,17 @@
                 <div class="new_task">
                     <input class="new_task-input" type="text" placeholder="Nuovo task..." v-model="newTask" @keyup.enter="addNewTask()">
                     <button class="btn new_task-btn" @click="addNewTask()">Aggiungi</button>
-                </div>
-                <div class="error" v-if="error">
-                    <small>{{errorMessage}}</small>
+                    <div class="error" v-if="error">
+                        <small>{{errorMessage}}</small>
+                    </div>
                 </div>
 
                 <div class="tasks_card">
                     <div class="tasks">
                         <ul class="tasks_list">
-                            <li class="task" :class="{lineThrough: task.done}" v-for="(task, index) in tasks"
-                                :key="index">
+                            <li class="task" 
+                                :class="{lineThrough: task.done}" 
+                                v-for="(task, index) in tasks" :key="index">
                                 <span>{{task.text}}</span>
                                 <ul class="check_marks">
                                     <li class="done" @click.stop="taskDone(index)">
